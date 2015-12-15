@@ -27,19 +27,6 @@ $(document).ready(function(e){
 			$('.mobile-page-nav').trigger('click');
 		}
 	});
-	$(window).resize(function(){
-		if($( window ).width() > 992)
-		{
-			$('.content').removeClass("container-fluid");
-			$('.content').addClass("container");
-		}
-		if($( window ).width() < 992)
-		{
-			$('.content').removeClass("container");
-			$('.content').addClass("container-fluid");
-		}
-	});
-	$(window).resize();
 
 });
 
