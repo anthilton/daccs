@@ -1,0 +1,75 @@
+.margin-top-10{
+	margin-top:10px;
+}
+.margin-top-20{
+	margin-top:20px;
+}
+.margin-top-30{
+	margin-top:30px;
+}
+.margin-top-40{
+	margin-top:40px;
+}
+.margin-top-50{
+	margin-top:50px;
+}
+.margin-bottom-10{
+	margin-bottom:10px;
+}
+
+.content-fixed{
+	padding-top:40px;
+}
+.request-brochure-mobile{
+	margin-top:3px;
+}
+.mobile-page-nav{
+	color:#FFF;
+	padding:9px 13px;
+	display:inline-block;
+	cursor: pointer;
+	background:#4a1a44;
+}
+.mobile-page-nav .text{
+	padding-left:5px;
+}
+.mobile-page-nav:hover{
+	color:#FFF;
+	text-decoration:none;
+}
+.mobile-page-actions
+{
+	color:#fff;
+	padding:9px 13px;
+	display:inline-block;
+	cursor: pointer;
+}
+.mobile-page-actions .text{
+	padding-left:5px;
+}
+.mobile-page-actions:hover{
+	color:#FFF;
+	text-decoration:none;
+}
+.panel .panel-body h1{
+	border-bottom:5px solid #CCC; 
+	display:inline-block;
+	margin-top:0px;
+}
+.panel .panel-body h3{
+	border-bottom:5px solid #CCC; 
+	display:inline-block;
+	margin-top:0px;
+}
+@media (max-width: 767px) {
+  .header-detail {
+    text-align:center;
+  }
+}
+.banner{
+max-height:132px;
+}
+.caret.caret-reversed {
+    border-top-width: 0;
+    border-bottom: 4px solid #FFF;
+}
