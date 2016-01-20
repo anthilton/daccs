@@ -73,3 +73,43 @@ max-height:132px;
     border-top-width: 0;
     border-bottom: 4px solid #FFF;
 }
+
+.sticky-contact{
+	position:absolute; 
+	right:0px; 
+	background:#16DD00; 
+	border-radius: 0px 0px 0px 30px;
+	-moz-border-radius: 0px 0px 0px 30px;
+	-webkit-border-radius: 0px 0px 0px 30px; 
+	z-index:1;
+}
+.sticky-contact .contact{
+	color:#FFF;display:block; padding:15px 20px;
+}
+
+.sticky-contact .contact.number{
+	background:#4a1a44;
+}
+
+.sticky-contact .contact.email{
+	background:#4a1a44;
+}
+
+.scroll-top{
+	position:fixed; 
+	display:none; 
+	bottom:40px; 
+	right:10px; 
+	padding:15px 20px; 
+	border:1px solid black; 
+	background:#421c52; 
+	color:#FFF;
+}
+
+.banner-logo{
+	width:100%; 
+	max-width:250px;
+}
+.banner-slogan{
+	font-family: 'Dancing Script', cursive;
+}

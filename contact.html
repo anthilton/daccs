@@ -5,14 +5,13 @@
 		<title>Devon and Cornwall Care Services - Contact Us</title>
 		<script src="js/jquery-1.11.1.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/parsley.min.js"></script>
 		<script src="js/growl.js"></script>
 		<script src="js/main.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/custom.css">
+		<link href="css/parsley.css" rel="stylesheet">
 		<link href='http://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
-		<script>
-		
-		</script>
 	</head>
 	<body>
 		<div class="container-fluid hidden-xs banner" style="background-color:#FFF;">
@@ -22,12 +21,12 @@
 						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
 							<div style=" padding:10px 0px;">
 								<a href="index.html" title="Home">
-									<img src="images/logo.png" style="width:100%; max-width:250px;" />
+									<img src="images/logo.png" class="banner-logo" />
 								</a>
 							</div>
 						</div>
-						<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 text-center">
-							<h2 class="hidden-sm margin-top-30" style="font-family: 'Dancing Script', cursive;">
+						<div class="col-lg-4 col-md-3 col-sm-4 col-xs-12 text-center">
+							<h2 class="hidden-sm margin-top-30 banner-slogan">
 								Caring for people in the Community
 							</h2>
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-top-20 text-center hidden-md hidden-lg ">
@@ -50,7 +49,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-5 col-md-5 col-sm-4 col-xs-12 text-center">
+						<div class="col-lg-4 col-md-5 col-sm-4 col-xs-12 text-center">
 							<div class="row">
 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 									<h3 class="margin-top-20 margin-bottom-10 header-detail">
@@ -135,11 +134,11 @@
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
-			<div class="hidden-xs" style="position:absolute; right:0px; background:#16DD00; border-radius: 0px 0px 0px 30px;-moz-border-radius: 0px 0px 0px 30px;-webkit-border-radius: 0px 0px 0px 30px;">
-				<a href="#" title="Call today" style="color:#FFF; background:#4a1a44; display:block; padding:15px 20px;"> 
+			<div class="hidden-xs sticky-contact">
+				<a href="#" title="Call today" class="contact number"> 
 					<span class="glyphicon glyphicon-earphone"></span> 01822 610734
 				</a>
-				<a href="#" title="Call today" style="color:#FFF; display:block; padding:15px 20px;" data-toggle="modal" data-target="#emailModal"> 
+				<a href="#" title="Call today" class="contact" data-toggle="modal" data-target="#emailModal"> 
 					<span class="glyphicon glyphicon-envelope"></span> Email
 				</a>
 			</div>
@@ -148,29 +147,31 @@
 			<div class=" " style="border-bottom:1px solid #ccc; background:#FCF7FF;">
 				<div class="content container-fluid">
 					<h1 style="margin-bottom:0px; text-align:center;">Contact Us</h1>
-					<div class="row margin-top-10">
+					<div class="row margin-top-10" style="margin-bottom:10px;">
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<form id="contactForm" role="form">
+							<form id="send-email-form" role="form" data-parsley-validate>
 								<div class="form-group">
-									<label for="name">Name:</label>
-									<input type="text" id="name" name="name" placeholder="Your Name" class="form-control" required="">
+									<label for="email-name">Name:*</label>
+									<input type="text" id="email-name" name="name" placeholder="Your Name" class="form-control" data-parsley-required="true">
 								</div>
 								<div class="form-group">
-									<label for="email">Email:</label>
-									<input type="email" id="email" name="email" placeholder="Your Email" class="form-control" required="">
+									<label for="email-address">Email:*</label>
+									<input type="email" id="email-address" name="email" placeholder="Your Email" class="form-control" data-parsley-required="true">
 								</div>
 								<div class="form-group">
-									<label for="telephone">Contact Number:</label>
-									<input type="tel" id="telephone" name="contactNumber" placeholder="Contact Number" class="form-control" required="">
+									<label for="email-telephone">Contact Number:*</label>
+									<input type="tel" id="email-telephone" name="contactNumber" placeholder="Contact Number" class="form-control" data-parsley-required="true">
 								</div>
 								<div class="form-group">
-									<label for="message">Message:</label>
-									<textarea id="message" placeholder="Message" name="message" class="form-control" required=""></textarea>
+									<label for="email-message">Message:*</label>
+									<textarea id="email-message" placeholder="Message" name="message" class="form-control" data-parsley-required="true"></textarea>
 								</div>
-								<button id="btnContact" type="button" class="btn btn-default">Send</button>
+								<div class="text-right">
+									<button id="btn-send-email" type="submit" class="btn btn-default">Send</button>
+								</div>
 							</form>
 						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 margin-top-30">
 							<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="width:100%; height:300px;" src="https://maps.google.com/maps?hl=en&q=Daccs Tavistock&ie=UTF8&t=roadmap&z=16&iwloc=B&output=embed"><div><small><a href="http://embedgooglemaps.com">embedgooglemaps.com</a></small></div><div><small><a href="http://buyproxies.io/">private proxy</a></small></div></iframe>
 						</div>
 					</div>
@@ -235,6 +236,87 @@
 				</div>
 			</div>
 		</footer>
+		<script>
+			function clearEmailFields(){
+				$("#email-name").val("");
+				$("#email-address").val("");
+				$("#email-telephone").val("");
+				$("#email-message").val("");
+			};
+			
+			$(document).ready(function(){
+				var validator = $('#send-email-form').parsley();
+				$('#clear-email').on("click",function(){
+					clearEmailFields();
+					validator.validate();
+				});
+				var request;
+				
+				$('#send-email-form').on("submit",function(event){
+					
+					if(!validator.isValid()){
+						return false;
+					}
+					// Abort any pending request
+					if (request) {
+						request.abort();
+					}
+					
+					var $form = $(this);
+				
+					// Let's select and cache all the fields
+					var $inputs = $form.find("input, select, button, textarea");
+				
+					// Serialize the data in the form
+					var serializedData = $form.serialize();
+				
+					$inputs.prop("disabled", true);
+					
+					var request = $.ajax({
+						type: 'POST',
+						url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+						data: {
+							'key': 'ovVqO3_aJHVaIpGZPHPn7A',
+							'message': {
+								'from_email': $('#email-address').val(),
+								'to': [
+									{
+										'email': 'anthilton@gmail.com',
+										'name': 'Anthony',
+										'type': 'to'
+									}
+								],
+							'autotext': 'true',
+							'subject': 'Daccs Website Email',
+							'html': $('#email-message').val()
+						}
+					  }
+					 });
+				
+				
+					// Callback handler that will be called on success
+					request.done(function (response, textStatus, jqXHR){
+						clearEmailFields();
+					});
+
+					// Callback handler that will be called on failure
+					request.fail(function (jqXHR, textStatus, errorThrown){
+						
+					});
+					
+					// Callback handler that will be called regardless
+					// if the request failed or succeeded
+					request.always(function () {
+						// Reenable the inputs
+						$inputs.prop("disabled", false);
+					});
+					
+					event.preventDefault();
+				});
+				
+			});
+			
+		</script>
 		<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="Email Modal" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -265,7 +347,7 @@
 				</div>
 			</div>
 		</div>
-		<a href="#" title="scroll to the top of the page" id="scrollTop" style="position:fixed; display:none; bottom:40px; right:10px; padding:15px 20px; border:1px solid black; background:#421c52; color:#FFF;">
+		<a href="#" title="scroll to the top of the page" id="scrollTop" class="scroll-top">
 			<span class="caret caret-reversed"></span> 
 		</a>
 	</body>

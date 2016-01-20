@@ -45,11 +45,15 @@ var attachHeaderPositioning = function()
 				 $('#contentOuter').addClass("content-fixed");
 			}
 			
-			if($(window).scrollTop()>100)
+			if($(window).scrollTop()>100 && !$('#scrollTop').hasClass("show"))
 			{
-				$('#scrollTop').fadeIn();
-			}else{
-				$('#scrollTop').fadeOut();
+				$('#scrollTop').fadeIn(400,function(){
+					$(this).addClass("show")
+				});
+			}else if($(window).scrollTop()<100 && $('#scrollTop').hasClass("show")){
+				$('#scrollTop').fadeOut(400, function(){
+					$(this).removeClass("show");
+				});
 			}
 
 			if($(window).scrollTop()<offsetFromTop)
