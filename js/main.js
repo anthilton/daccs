@@ -27,8 +27,89 @@ $(document).ready(function(e){
 			$('.mobile-page-nav').trigger('click');
 		}
 	});
+	
+	
+	var modalValidator = $('#emailModalForm').parsley();
+	var request;
+	$('#emailModalForm').on("submit",function(event){
+		if(!modalValidator.isValid()){
+			return false;
+		}
+		
+		if (request) {
+			request.abort();
+		}
+		
+		var $form = $(this);
+	
+		// Let's select and cache all the fields
+		var $inputs = $form.find("input, select, button, textarea");
+	
+		// Serialize the data in the form
+		var serializedData = $form.serialize();
+		
+		$inputs.prop("disabled", true);
+		
+		$('#modal-email-sending').removeClass("hide");
+					
+		var request = $.ajax({
+			type: 'POST',
+			url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+			data: {
+				'key': 'ovVqO3_aJHVaIpGZPHPn7A',
+				'message': {
+					'from_email': $('#modal-email-address').val(),
+					'to': [
+						{
+							'email': 'anthilton@gmail.com',
+							'name': 'Anthony',
+							'type': 'to'
+						}
+					],
+				'autotext': 'true',
+				'subject': 'Daccs Website Email',
+				'html': $('#modal-email-message').val()
+			}
+			}
+			});
+	
+	
+		// Callback handler that will be called on success
+		request.done(function (response, textStatus, jqXHR){
+			clearModalEmailFields();
+			$form.parsley().reset();
+			$('#modal-email-sending').addClass("hide");
+			$('#modal-email-sent').removeClass("hide");
+			setTimeout(function(){
+				$('#modal-email-sent').addClass("hide");
+			}, 3000); 
+		});
+
+		// Callback handler that will be called on failure
+		request.fail(function (jqXHR, textStatus, errorThrown){
+			$('#modal-email-sending').addClass("hide");
+			$('#modal-email-sent').addClass("hide");
+		});
+		
+		// Callback handler that will be called regardless
+		// if the request failed or succeeded
+		request.always(function () {
+			// Reenable the inputs
+			$inputs.prop("disabled", false);
+		});
+		
+		event.preventDefault();
+		
+	});
 
 });
+
+function clearModalEmailFields(){
+	$("#modal-email-name").val("");
+	$("#modal-email-address").val("");
+	$("#modal-email-telephone").val("");
+	$("#modal-email-message").val("");
+};
 
 var attachHeaderPositioning = function()
 {

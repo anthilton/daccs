@@ -52,12 +52,6 @@
 	text-decoration:none;
 }
 .panel .panel-body h1{
-	border-bottom:5px solid #CCC; 
-	display:inline-block;
-	margin-top:0px;
-}
-.panel .panel-body h3{
-	border-bottom:5px solid #CCC; 
 	display:inline-block;
 	margin-top:0px;
 }

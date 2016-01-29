@@ -90,13 +90,13 @@
 			<div class="collapse hidden-lg hidden-md hidden-sm" id="page-actions">
 				<ul class="nav navbar-nav">
 					<li>
-						<a href="#" style="color:#333;" title="Request Brochure" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-book"></span> Request a brochure</a>
+						<a href="daccs_leaflet.pdf" target="_blank" style="color:#fff;" title="Request Brochure"><span class="glyphicon glyphicon-book"></span> Request a brochure</a>
 					</li>
 					<li>
-						<a href="tel:01822610734"style="color:#333;" title="Call Now"><span class="glyphicon glyphicon-phone-alt"></span> 01822 610734</a>
+						<a href="tel:01822610734"style="color:#fff;" title="Call Now"><span class="glyphicon glyphicon-phone-alt"></span> 01822 610734</a>
 					</li>
 					<li>
-						<a href="mailto:anthilton@gmail.com" style="color:#333;" title="Email Now"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> info@daccservices.com</a>
+						<a href="mailto:anthilton@gmail.com" style="color:#fff;" title="Email Now"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> info@daccservices.com</a>
 					</li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
@@ -138,7 +138,7 @@
 				<a href="#" title="Call today" class="contact number"> 
 					<span class="glyphicon glyphicon-earphone"></span> 01822 610734
 				</a>
-				<a href="#" title="Call today" class="contact" data-toggle="modal" data-target="#emailModal"> 
+				<a href="#" title="Email today" class="contact" data-toggle="modal" data-target="#emailModal"> 
 					<span class="glyphicon glyphicon-envelope"></span> Email
 				</a>
 			</div>
@@ -168,6 +168,10 @@
 								</div>
 								<div class="text-right">
 									<button id="btn-send-email" type="submit" class="btn btn-default">Send</button>
+								</div>
+								<div>
+									<div id="email-sending" class="alert alert-info hide text-center" role="alert">Sending email</div>
+									<div id="email-sent" class="alert alert-success hide text-center" role="alert">Email Sent</div>
 								</div>
 							</form>
 						</div>
@@ -244,13 +248,17 @@
 				$("#email-message").val("");
 			};
 			
+			
 			$(document).ready(function(){
+	
+				var request;
+				
+				
 				var validator = $('#send-email-form').parsley();
 				$('#clear-email').on("click",function(){
 					clearEmailFields();
 					validator.validate();
 				});
-				var request;
 				
 				$('#send-email-form').on("submit",function(event){
 					
@@ -272,7 +280,7 @@
 				
 					$inputs.prop("disabled", true);
 					
-					var request = $.ajax({
+					request = $.ajax({
 						type: 'POST',
 						url: 'https://mandrillapp.com/api/1.0/messages/send.json',
 						data: {
@@ -297,6 +305,7 @@
 					// Callback handler that will be called on success
 					request.done(function (response, textStatus, jqXHR){
 						clearEmailFields();
+						$form.parsley().reset();
 					});
 
 					// Callback handler that will be called on failure
@@ -320,28 +329,36 @@
 		<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="Email Modal" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form id="emailModalForm" role="form">
+					<form id="emailModalForm" role="form" data-parsley-validate>
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 							<h4 class="modal-title" id="emailModalTitle">Email Us</h4>
 						</div>
 						<div class="modal-body">
 							<div class="form-group">
-								<label for="emailName">Name:</label>
-								<input type="text" id="emailName" name="name" placeholder="Your Name" class="form-control" />
+								<label for="modal-email-name">Name:*</label>
+								<input type="text" id="modal-email-name" name="name" placeholder="Your Name" class="form-control" data-parsley-required="true">
 							</div>
 							<div class="form-group">
-								<label for="mailEmail">Your Email:</label>
-								<input type="text" id="mailEmail" name="emailAddress" placeholder="Your Email" class="form-control" />
+								<label for="modal-email-address">Email:*</label>
+								<input type="email" id="modal-email-address" name="email" placeholder="Your Email" class="form-control" data-parsley-required="true">
 							</div>
 							<div class="form-group">
-								<label for="message">Message:</label>
-								<textarea type="email" id="message" rows="4" cols="50" name="message" placeholder="Message" class="form-control" style="max-width:100%;"></textarea>
+								<label for="modal-email-telephone">Contact Number:*</label>
+								<input type="tel" id="modal-email-telephone" name="contactNumber" placeholder="Contact Number" class="form-control" data-parsley-required="true">
+							</div>
+							<div class="form-group">
+								<label for="modal-email-message">Message:*</label>
+								<textarea id="modal-email-message" placeholder="Message" name="message" class="form-control" data-parsley-required="true"></textarea>
+							</div>
+							<div>
+								<div id="modal-email-sending" class="alert alert-info hide text-center" role="alert">Sending email</div>
+								<div id="modal-email-sent" class="alert alert-success hide text-center" role="alert">Email Sent</div>
 							</div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<button id="emailButton" type="button" class="btn btn-primary">Send</button>
+							<button id="btn-send-modal-email" type="submit" class="btn btn-default">Send</button>
 						</div>
 					</form>
 				</div>
