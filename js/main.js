@@ -180,10 +180,7 @@ $(document).ready(function(){
 	});
 	
 	$('#emailButton').click(function(){
-		$.post('email.php', $('#emailModalForm').serialize(),function(data){
-			$('#emailModal').modal('hide');
-			$.bootstrapGrowl("Email Sent Successfully",{type: 'success',align: 'center'});
-		});
+		$('#emailModalForm').submit();
 		
 	});
 });
