@@ -124,7 +124,7 @@
 								<a href="services.html#leariningdisabilities" title="Learning Disabilities">Learning Disabilities</a>
 							</li>
 							<li>
-								<a href="services.html#domcare" title="Domicilary Care">Domicilary Care</a>
+								<a href="services.html#domcare" title="Domiciliary Care">Domiciliary Care</a>
 							</li>
 						</ul>
 					</li>
@@ -184,7 +184,7 @@
 							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 								<h3 class="text-center">
 									<a href="#">
-										Home or Domcillary Care
+										Home or Domiciliary Care
 									</a>
 								</h3>
 							</div>
@@ -275,28 +275,36 @@
 		<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="Email Modal" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form id="emailModalForm" role="form">
+					<form id="emailModalForm" role="form" data-parsley-validate>
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 							<h4 class="modal-title" id="emailModalTitle">Email Us</h4>
 						</div>
 						<div class="modal-body">
 							<div class="form-group">
-								<label for="emailName">Name:</label>
-								<input type="text" id="emailName" name="name" placeholder="Your Name" class="form-control" />
+								<label for="modal-email-name">Name:*</label>
+								<input type="text" id="modal-email-name" name="name" placeholder="Your Name" class="form-control" data-parsley-required="true">
 							</div>
 							<div class="form-group">
-								<label for="mailEmail">Your Email:</label>
-								<input type="text" id="mailEmail" name="emailAddress" placeholder="Your Email" class="form-control" />
+								<label for="modal-email-address">Email:*</label>
+								<input type="email" id="modal-email-address" name="email" placeholder="Your Email" class="form-control" data-parsley-required="true">
 							</div>
 							<div class="form-group">
-								<label for="message">Message:</label>
-								<textarea type="email" id="message" rows="4" cols="50" name="message" placeholder="Message" class="form-control" style="max-width:100%;"></textarea>
+								<label for="modal-email-telephone">Contact Number:*</label>
+								<input type="tel" id="modal-email-telephone" name="contactNumber" placeholder="Contact Number" class="form-control" data-parsley-required="true">
+							</div>
+							<div class="form-group">
+								<label for="modal-email-message">Message:*</label>
+								<textarea id="modal-email-message" placeholder="Message" name="message" class="form-control" data-parsley-required="true"></textarea>
+							</div>
+							<div>
+								<div id="modal-email-sending" class="alert alert-info hide text-center" role="alert">Sending email</div>
+								<div id="modal-email-sent" class="alert alert-success hide text-center" role="alert">Email Sent</div>
 							</div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<button id="emailButton" type="button" class="btn btn-primary">Send</button>
+							<button id="btn-send-modal-email" type="submit" class="btn btn-default">Send</button>
 						</div>
 					</form>
 				</div>

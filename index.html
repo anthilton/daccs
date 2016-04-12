@@ -2,9 +2,11 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="google-site-verification" content="ts9nhrF2u-oOQeLzk-M671N7shqneR8LMdWPUiTQ1Ds" />
 		<title>Devon and Cornwall Care Services - Home</title>
 		<script src="js/jquery-1.11.1.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/parsley.min.js"></script>
 		<script src="js/growl.js"></script>
 		<script src="js/main.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
@@ -124,7 +126,7 @@
 								<a href="services.html#leariningdisabilities" title="Learning Disabilities">Learning Disabilities</a>
 							</li>
 							<li>
-								<a href="services.html#domcare" title="Domicilary Care">Domicilary Care</a>
+								<a href="services.html#domcare" title="Domiciliary Care">Domiciliary Care</a>
 							</li>
 						</ul>
 					</li>
@@ -167,7 +169,7 @@
 										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 											<h3 class="text-center">
 												<a href="#">
-													Home or Domcillary Care
+													Home or Domiciliary Care
 												</a>
 											</h3>
 										</div>
@@ -210,7 +212,7 @@
 										<li role="presentation"><a href="services.html#popin">Pop in services</a></li>
 										<li role="presentation"><a href="services.html#sitting">'Sitting' services</a></li>
 										<li role="presentation"><a href="services.html#leariningdisabilities">Learning Disabilities</a></li>
-										<li role="presentation"><a href="services.html#domcare">Domicilary Care</a></li>
+										<li role="presentation"><a href="services.html#domcare">Domiciliary Care</a></li>
 									</ul>
 								</div>
 							</div>
@@ -229,7 +231,7 @@
 							<div class="panel panel-primary">
 								<div class="panel-heading">What is Domiciliary Care?</div>
 								<div class="panel-body">
-									<p>Domcillary care is supportive care provided in the home.</p>
+									<p>Domiciliary care is supportive care provided in the home.</p>
 									<p>We pride ourselves on making sure that you feel comfortable and independant while care is provided to you or a loved one</p>
 								</div>
 							</div>
@@ -286,7 +288,7 @@
 						<h5 style="border-bottom:1px solid #CCC;">Useful Links</h5>
 						<ul class="list-unstyled">
 							<li>
-								<a href="#" title="Quality Care Commission">
+								<a href="http://www.cqc.org.uk/location/1-125986598" target="_blank" title="Quality Care Commission">
 									<img src="images/cqc_logo.png" alt="" style="width:65px;"/>
 								</a>
 							</li>
@@ -335,28 +337,36 @@
 		<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="Email Modal" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form id="emailModalForm" role="form">
+					<form id="emailModalForm" role="form" data-parsley-validate>
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 							<h4 class="modal-title" id="emailModalTitle">Email Us</h4>
 						</div>
 						<div class="modal-body">
 							<div class="form-group">
-								<label for="emailName">Name:</label>
-								<input type="text" id="emailName" name="name" placeholder="Your Name" class="form-control" />
+								<label for="modal-email-name">Name:*</label>
+								<input type="text" id="modal-email-name" name="name" placeholder="Your Name" class="form-control" data-parsley-required="true">
 							</div>
 							<div class="form-group">
-								<label for="mailEmail">Your Email:</label>
-								<input type="text" id="mailEmail" name="emailAddress" placeholder="Your Email" class="form-control" />
+								<label for="modal-email-address">Email:*</label>
+								<input type="email" id="modal-email-address" name="email" placeholder="Your Email" class="form-control" data-parsley-required="true">
 							</div>
 							<div class="form-group">
-								<label for="message">Message:</label>
-								<textarea type="email" id="message" rows="4" cols="50" name="message" placeholder="Message" class="form-control" style="max-width:100%;"></textarea>
+								<label for="modal-email-telephone">Contact Number:*</label>
+								<input type="tel" id="modal-email-telephone" name="contactNumber" placeholder="Contact Number" class="form-control" data-parsley-required="true">
+							</div>
+							<div class="form-group">
+								<label for="modal-email-message">Message:*</label>
+								<textarea id="modal-email-message" placeholder="Message" name="message" class="form-control" data-parsley-required="true"></textarea>
+							</div>
+							<div>
+								<div id="modal-email-sending" class="alert alert-info hide text-center" role="alert">Sending email</div>
+								<div id="modal-email-sent" class="alert alert-success hide text-center" role="alert">Email Sent</div>
 							</div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<button id="emailButton" type="button" class="btn btn-primary">Send</button>
+							<button id="btn-send-modal-email" type="submit" class="btn btn-default">Send</button>
 						</div>
 					</form>
 				</div>
