@@ -54,21 +54,16 @@ $(document).ready(function(e){
 					
 		var request = $.ajax({
 			type: 'POST',
-			url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+			beforeSend: function(request) {
+				request.setRequestHeader("Authorization", "Basic YXBpOmtleS03MDNhNzk4ODY1ZDEwZTRkMDljZGE3N2JkMDk2MzkxZA==");
+			}
+			url: 'https://api.mailgun.net/v3/daccservices.com/messages',
 			data: {
 				'key': '98DwLDwL9LL5kdLUUieqsA',
-				'message': {
-					'from_email': $('#modal-email-address').val(),
-					'to': [
-						{
-							'email': 'info@daccservices.com',
-							'name': 'Anthony',
-							'type': 'to'
-						}
-					],
-				'autotext': 'true',
+				'from': $('#modal-email-address').val(),
+				'to' : $('#modal-email-address').val(),
 				'subject': 'Daccs Website Email',
-				'html': $('#modal-email-message').val()
+				'text': $('#modal-email-message').val()
 			}
 			}
 			});
