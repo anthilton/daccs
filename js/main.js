@@ -54,17 +54,15 @@ $(document).ready(function(e){
 					
 		var request = $.ajax({
 			type: 'POST',
-			beforeSend: function(request) {
-				request.setRequestHeader("Authorization", "Basic YXBpOmtleS03MDNhNzk4ODY1ZDEwZTRkMDljZGE3N2JkMDk2MzkxZA==");
-			},
 			url: 'https://api.mailgun.net/v3/daccservices.com/messages',
 			data: {
-				'key': '98DwLDwL9LL5kdLUUieqsA',
 				'from': $('#modal-email-address').val(),
 				'to' : 'info@daccservices.com',
 				'subject': 'Daccs Website Email',
 				'text': $('#modal-email-message').val()
-			}
+			},
+			username:'api',
+			password: 'key-703a798865d10e4d09cda77bd096391d',
 		});
 	
 	

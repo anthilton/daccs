@@ -281,18 +281,24 @@
 					
 					request = $.ajax({
 						type: 'POST',
-						beforeSend: function(request) {
-							request.setRequestHeader("Authorization", "Basic YXBpOmtleS03MDNhNzk4ODY1ZDEwZTRkMDljZGE3N2JkMDk2MzkxZA==");
-						},
-						url: 'https://api.mailgun.net/v3/daccservices.com/messages',
+						url: 'https://mandrillapp.com/api/1.0/messages/send.json',
 						data: {
 							'key': '98DwLDwL9LL5kdLUUieqsA',
-							'from': $('#modal-email-address').val(),
-							'to' : 'info@daccservices.com',
+							'message': {
+								'from_email': $('#email-address').val(),
+								'to': [
+									{
+										'email': 'info@daccservices.com',
+										'name': 'Anthony',
+										'type': 'to'
+									}
+								],
+							'autotext': 'true',
 							'subject': 'Daccs Website Email',
-							'text': $('#modal-email-message').val()
+							'html': $('#email-message').val()
 						}
-					});
+					  }
+					 });
 				
 				
 					// Callback handler that will be called on success
