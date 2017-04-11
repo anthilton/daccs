@@ -56,12 +56,12 @@ $(document).ready(function(e){
 			type: 'POST',
 			url: 'https://mandrillapp.com/api/1.0/messages/send.json',
 			data: {
-				'key': 'ovVqO3_aJHVaIpGZPHPn7A',
+				'key': '98DwLDwL9LL5kdLUUieqsA',
 				'message': {
 					'from_email': $('#modal-email-address').val(),
 					'to': [
 						{
-							'email': 'anthilton@gmail.com',
+							'email': 'info@daccservices.com',
 							'name': 'Anthony',
 							'type': 'to'
 						}
