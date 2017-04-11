@@ -56,7 +56,7 @@ $(document).ready(function(e){
 			type: 'POST',
 			beforeSend: function(request) {
 				request.setRequestHeader("Authorization", "Basic YXBpOmtleS03MDNhNzk4ODY1ZDEwZTRkMDljZGE3N2JkMDk2MzkxZA==");
-			}
+			},
 			url: 'https://api.mailgun.net/v3/daccservices.com/messages',
 			data: {
 				'key': '98DwLDwL9LL5kdLUUieqsA',
