@@ -65,8 +65,7 @@ $(document).ready(function(e){
 				'subject': 'Daccs Website Email',
 				'text': $('#modal-email-message').val()
 			}
-			}
-			});
+		});
 	
 	
 		// Callback handler that will be called on success
