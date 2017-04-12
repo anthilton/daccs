@@ -68,7 +68,7 @@ $(document).ready(function(e){
 					],
 				'autotext': 'true',
 				'subject': 'Daccs Website Email',
-				'html': 'FROM:: ' + $('#email-address').val() + ' <br /> ' + $('#email-message').val()
+				'html': 'FROM: ' + $('#modal-email-address').val() + ' <br /> NAME: ' + $('#modal-email-name').val() + ' <br /> CONTACT NUMBER: ' + $('#modal-email-telephone').val() + ' <br /> ' + $('#modal-email-message').val()
 			}
 			}
 			});
