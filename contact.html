@@ -7,7 +7,7 @@
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/parsley.min.js"></script>
 		<script src="js/growl.js"></script>
-		<script src="js/main.js"></script>
+		<script src="js/main.js?v=1"></script>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/custom.css">
 		<link href="css/parsley.css" rel="stylesheet">
@@ -289,13 +289,13 @@
 								'to': [
 									{
 										'email': 'info@daccservices.com',
-										'name': 'Anthony',
+										'name': 'DACCS',
 										'type': 'to'
 									}
 								],
 							'autotext': 'true',
 							'subject': 'Daccs Website Email',
-							'html': 'FROM:: ' + $('#email-address').val() + ' ' + $('#email-message').val()
+							'html': 'FROM:: ' + $('#email-address').val() + ' <br /> ' + $('#email-message').val()
 						}
 					  }
 					 });

@@ -62,13 +62,13 @@ $(document).ready(function(e){
 					'to': [
 						{
 							'email': 'info@daccservices.com',
-							'name': 'Anthony',
+							'name': 'DACCS',
 							'type': 'to'
 						}
 					],
 				'autotext': 'true',
 				'subject': 'Daccs Website Email',
-				'html': 'FROM:: ' + $('#email-address').val() + ' ' + $('#email-message').val()
+				'html': 'FROM:: ' + $('#email-address').val() + ' <br /> ' + $('#email-message').val()
 			}
 			}
 			});
