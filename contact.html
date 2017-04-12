@@ -285,7 +285,7 @@
 						data: {
 							'key': '98DwLDwL9LL5kdLUUieqsA',
 							'message': {
-								'from_email': $('#email-address').val(),
+								'from_email': 'info@daccservices.com',
 								'to': [
 									{
 										'email': 'info@daccservices.com',
@@ -295,7 +295,7 @@
 								],
 							'autotext': 'true',
 							'subject': 'Daccs Website Email',
-							'html': $('#email-message').val()
+							'html': 'FROM:: ' + $('#email-address').val() + ' ' + $('#email-message').val()
 						}
 					  }
 					 });

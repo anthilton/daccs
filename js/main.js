@@ -58,7 +58,7 @@ $(document).ready(function(e){
 			data: {
 				'key': '98DwLDwL9LL5kdLUUieqsA',
 				'message': {
-					'from_email': $('#modal-email-address').val(),
+					'from_email': 'info@daccservices.com',
 					'to': [
 						{
 							'email': 'info@daccservices.com',
@@ -68,7 +68,7 @@ $(document).ready(function(e){
 					],
 				'autotext': 'true',
 				'subject': 'Daccs Website Email',
-				'html': $('#modal-email-message').val()
+				'html': 'FROM:: ' + $('#email-address').val() + ' ' + $('#email-message').val()
 			}
 			}
 			});
