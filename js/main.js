@@ -58,17 +58,17 @@ $(document).ready(function(e){
 			data: {
 				'key': '98DwLDwL9LL5kdLUUieqsA',
 				'message': {
-					'from_email': $('#modal-email-address').val(),
+					'from_email': 'info@daccservices.com',
 					'to': [
 						{
 							'email': 'info@daccservices.com',
-							'name': 'Anthony',
+							'name': 'DACCS',
 							'type': 'to'
 						}
 					],
 				'autotext': 'true',
 				'subject': 'Daccs Website Email',
-				'html': $('#modal-email-message').val()
+				'html': 'FROM: ' + $('#modal-email-address').val() + ' <br /> NAME: ' + $('#modal-email-name').val() + ' <br /> CONTACT NUMBER: ' + $('#modal-email-telephone').val() + ' <br /> ' + $('#modal-email-message').val()
 			}
 			}
 			});
