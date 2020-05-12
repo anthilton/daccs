@@ -137,7 +137,7 @@
 				<a href="#" title="Call today" class="contact number"> 
 					<span class="glyphicon glyphicon-earphone"></span> 01822 610734
 				</a>
-				<a href="#" title="Email today" class="contact" data-toggle="modal" data-target="#emailModal"> 
+				<a href="#" title="Email today" class="contact" href="mailto:info@daccservices.com"> 
 					<span class="glyphicon glyphicon-envelope"></span> Email
 				</a>
 			</div>
@@ -148,31 +148,7 @@
 					<h1 style="margin-bottom:0px; text-align:center;">Contact Us</h1>
 					<div class="row margin-top-10" style="margin-bottom:10px;">
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<form id="send-email-form" role="form" data-parsley-validate>
-								<div class="form-group">
-									<label for="email-name">Name:*</label>
-									<input type="text" id="email-name" name="name" placeholder="Your Name" class="form-control" data-parsley-required="true">
-								</div>
-								<div class="form-group">
-									<label for="email-address">Email:*</label>
-									<input type="email" id="email-address" name="email" placeholder="Your Email" class="form-control" data-parsley-required="true">
-								</div>
-								<div class="form-group">
-									<label for="email-telephone">Contact Number:*</label>
-									<input type="tel" id="email-telephone" name="contactNumber" placeholder="Contact Number" class="form-control" data-parsley-required="true">
-								</div>
-								<div class="form-group">
-									<label for="email-message">Message:*</label>
-									<textarea id="email-message" placeholder="Message" name="message" class="form-control" data-parsley-required="true"></textarea>
-								</div>
-								<div class="text-right">
-									<button id="btn-send-email" type="submit" class="btn btn-default">Send</button>
-								</div>
-								<div>
-									<div id="email-sending" class="alert alert-info hide text-center" role="alert">Sending email</div>
-									<div id="email-sent" class="alert alert-success hide text-center" role="alert">Email Sent</div>
-								</div>
-							</form>
+							<h1><a href="mailto:info@daccservices.com" style="" title="Email Now"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> info@daccservices.com</a></h1>
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 margin-top-30">
 							<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="width:100%; height:300px;" src="https://maps.google.com/maps?hl=en&q=Daccs Tavistock&ie=UTF8&t=roadmap&z=16&iwloc=B&output=embed"><div></div><div><small><a href="http://buyproxies.io/">private proxy</a></small></div></iframe>
@@ -239,130 +215,7 @@
 				</div>
 			</div>
 		</footer>
-		<script>
-			function clearEmailFields(){
-				$("#email-name").val("");
-				$("#email-address").val("");
-				$("#email-telephone").val("");
-				$("#email-message").val("");
-			};
-			
-			
-			$(document).ready(function(){
-	
-				var request;
-				
-				
-				var validator = $('#send-email-form').parsley();
-				$('#clear-email').on("click",function(){
-					clearEmailFields();
-					validator.validate();
-				});
-				
-				$('#send-email-form').on("submit",function(event){
-					
-					if(!validator.isValid()){
-						return false;
-					}
-					// Abort any pending request
-					if (request) {
-						request.abort();
-					}
-					
-					var $form = $(this);
-				
-					// Let's select and cache all the fields
-					var $inputs = $form.find("input, select, button, textarea");
-				
-					// Serialize the data in the form
-					var serializedData = $form.serialize();
-				
-					$inputs.prop("disabled", true);
-					
-					request = $.ajax({
-						type: 'POST',
-						url: 'https://mandrillapp.com/api/1.0/messages/send.json',
-						data: {
-							'key': '98DwLDwL9LL5kdLUUieqsA',
-							'message': {
-								'from_email': $('#email-address').val(),
-								'to': [
-									{
-										'email': 'info@daccservices.com',
-										'name': 'Anthony',
-										'type': 'to'
-									}
-								],
-							'autotext': 'true',
-							'subject': 'Daccs Website Email',
-							'html': $('#email-message').val()
-						}
-					  }
-					 });
-				
-				
-					// Callback handler that will be called on success
-					request.done(function (response, textStatus, jqXHR){
-						clearEmailFields();
-						$form.parsley().reset();
-					});
-
-					// Callback handler that will be called on failure
-					request.fail(function (jqXHR, textStatus, errorThrown){
-						
-					});
-					
-					// Callback handler that will be called regardless
-					// if the request failed or succeeded
-					request.always(function () {
-						// Reenable the inputs
-						$inputs.prop("disabled", false);
-					});
-					
-					event.preventDefault();
-				});
-				
-			});
-			
-		</script>
-		<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="Email Modal" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<form id="emailModalForm" role="form" data-parsley-validate>
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-							<h4 class="modal-title" id="emailModalTitle">Email Us</h4>
-						</div>
-						<div class="modal-body">
-							<div class="form-group">
-								<label for="modal-email-name">Name:*</label>
-								<input type="text" id="modal-email-name" name="name" placeholder="Your Name" class="form-control" data-parsley-required="true">
-							</div>
-							<div class="form-group">
-								<label for="modal-email-address">Email:*</label>
-								<input type="email" id="modal-email-address" name="email" placeholder="Your Email" class="form-control" data-parsley-required="true">
-							</div>
-							<div class="form-group">
-								<label for="modal-email-telephone">Contact Number:*</label>
-								<input type="tel" id="modal-email-telephone" name="contactNumber" placeholder="Contact Number" class="form-control" data-parsley-required="true">
-							</div>
-							<div class="form-group">
-								<label for="modal-email-message">Message:*</label>
-								<textarea id="modal-email-message" placeholder="Message" name="message" class="form-control" data-parsley-required="true"></textarea>
-							</div>
-							<div>
-								<div id="modal-email-sending" class="alert alert-info hide text-center" role="alert">Sending email</div>
-								<div id="modal-email-sent" class="alert alert-success hide text-center" role="alert">Email Sent</div>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<button id="btn-send-modal-email" type="submit" class="btn btn-default">Send</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
+		
 		<a href="#" title="scroll to the top of the page" id="scrollTop" class="scroll-top">
 			<span class="caret caret-reversed"></span> 
 		</a>
